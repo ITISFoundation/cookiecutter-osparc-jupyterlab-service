@@ -1,0 +1,44 @@
+name: {{ cookiecutter.project_name }}
+key: simcore/services/dynamic/{{ cookiecutter.project_slug }}
+type: dynamic
+integration-version: 2.0.0
+version: {{ cookiecutter.version }}
+description: {{ cookiecutter.project_short_description }}
+contact: {{ cookiecutter.contact_email }}
+thumbnail: https://github.com/ITISFoundation/osparc-assets/blob/cb43207b6be2f4311c93cd963538d5718b41a023/assets/default-thumbnail-cookiecutter-osparc-service.png?raw=true
+authors:
+  - name: {{ cookiecutter.author_name }}
+    email: {{ cookiecutter.author_email }}
+    affiliation: {{ cookiecutter.author_affiliation }}
+inputs:
+  {% for i in range(cookiecutter.number_of_inputs|int) -%}
+  input_{{ i+1 }}:
+    displayOrder: {{ i+1 }}
+    label: input_file_{{ i+1 }}
+    description:
+      Any input files. One or several files compressed in a zip will be
+      downloaded in an inputs folder.   
+    type: data:*/*
+  {% endfor %}
+outputs:
+  {% for i in range(cookiecutter.number_of_outputs|int) -%}
+  output_{{ i+1 }}:
+    displayOrder: {{ i+1 }}
+    label: output_files_{{ i+1 }}
+    description: Output files uploaded from the outputs folder
+    type: data:*/*
+  {% endfor %}
+boot-options:
+  boot_mode:
+    label: Boot mode
+    description: Select boot type for the service (only for python-based ones)
+    default: "0"
+    items:
+      "0":
+        label: JupyterLab
+        description: Display the JupyterLab interface in the default boot mode
+      "1":
+        label: Voila
+        description:
+          To start as Voila save a notebook as "voila.ipynb" in the root
+          folder

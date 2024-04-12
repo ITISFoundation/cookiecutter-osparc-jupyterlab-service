@@ -1,0 +1,6 @@
+#
+# This file keeps track of all the Julia packages and versions that will be installed in your service.
+# Some packages are already installed: see https://github.com/jupyter/docker-stacks/blob/e838ff397a2d9c2ad0faae051ef0ec4f20732320/images/minimal-notebook/setup-scripts/setup-julia-packages.bash#L30
+# The following list is just an example
+[deps]
+RDatasets = "ce6b1742-4840-55fa-b093-852dadbb1d8b" 

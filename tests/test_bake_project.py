@@ -9,7 +9,8 @@ from pytest_cookies.plugin import Cookies, Result
 import pytest
 
 def test_minimal_config_to_bake(cookies: Cookies):
-    result = cookies.bake(extra_context={"project_slug": "test_project"})
+    result = cookies.bake(extra_context={
+            "project_slug": "test_project"})
     assert result is not None
     assert result.exit_code == 0
     assert result.exception is None

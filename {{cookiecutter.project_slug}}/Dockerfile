@@ -39,7 +39,7 @@ ENV HOME="/home/$NB_USER"
 # This will install the additional packages that you specified in requirements.txt in the pre-existing Python kernel
 # Like in: https://github.com/jupyter/docker-stacks/blob/main/images/scipy-notebook/Dockerfile
 
-COPY --chown=$NB_UID:$NB_GID {{ cookiecutter.project_package_name }}/env-config/python/requirements.txt ${NOTEBOOK_BASE_DIR}/requirements.txt
+COPY --chown=$NB_UID:$NB_GID env-config/python/requirements.txt ${NOTEBOOK_BASE_DIR}/requirements.txt
 RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/requirements.txt
 
 ## ----------------------------------------------------------------------
@@ -49,7 +49,7 @@ RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/requirements.txt
 # ------------------------- Other kernel -------------------------------------------
 # This will install the additional packages that you specified in requirements.txt in the pre-existing R kernel
 # Like in: https://github.com/jupyter/docker-stacks/blob/main/images/r-notebook/Dockerfile
-COPY --chown=$NB_UID:$NB_GID {{ cookiecutter.project_package_name }}/env-config/r/requirements.txt ${NOTEBOOK_BASE_DIR}/requirements.txt
+COPY --chown=$NB_UID:$NB_GID env-config/r/requirements.txt ${NOTEBOOK_BASE_DIR}/requirements.txt
 RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/requirements.txt
 ## ------------------------------------------------------------------------
 {% endif %}
@@ -58,7 +58,7 @@ RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/requirements.txt
 {% if cookiecutter.docker_base == "quay.io/jupyter/julia-notebook:julia-1.10.2" %} 
 # ------------------------- Other kernel -------------------------------------------
 # This will install the additional packages that you specified in Project.toml in the pre-existing Julia kernel.
-COPY --chown=$NB_UID:$NB_GID {{ cookiecutter.project_package_name }}/env-config/julia/Project.toml ${NOTEBOOK_BASE_DIR}/Project.toml
+COPY --chown=$NB_UID:$NB_GID env-config/julia/Project.toml ${NOTEBOOK_BASE_DIR}/Project.toml
 RUN julia --project=${NOTEBOOK_BASE_DIR} -e 'using Pkg; Pkg.instantiate()'
 ## ------------------------------------------------------------------------
 {% endif %}

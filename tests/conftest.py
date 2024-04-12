@@ -16,9 +16,10 @@ cookiecutter_json = repo_basedir / "cookiecutter.json"
 def baked_project(cookies: Cookies, request) -> Result:
     result = cookies.bake(
         extra_context={
-            "project_slug": "DummyProject",
+            "project_slug": "dummy-project",
             "project_name": "dummy-project",
             "default_docker_registry": "test.test.com",
+            "author_email": "test@project.org",
             "docker_base": request.param,
         }
     )

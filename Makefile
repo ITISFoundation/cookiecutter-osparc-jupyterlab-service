@@ -14,7 +14,7 @@ OUTPUT_DIR := $(if $(COOCKIECUTTER_OUTPUT_DIR),$(COOCKIECUTTER_OUTPUT_DIR),$(CUR
 TEMPLATE = $(CURDIR)
 VERSION := $(shell cat VERSION)
 
-# PYTHON ENVIRON -----------------------------------
+# PYTHON ENVIRON ---------------------------------------------------------------------------------------
 .PHONY: devenv
 .venv:
 	@python3 --version
@@ -27,11 +27,17 @@ VERSION := $(shell cat VERSION)
 
 devenv: .venv  ## create a python virtual environment with tools to dev, run and tests cookie-cutter
 	# installing extra tools
-	@$</bin/pip3 install -r requirements-dev.txt
+	@$</bin/pip3 install pip-tools
 	# your dev environment contains
 	@$</bin/pip3 list
 	@echo "To activate the virtual environment, run 'source $</bin/activate'"
 
+# Upgrades and tracks python packages versions installed in the service ---------------------------------
+requirements: devenv ## runs pip-tools to build requirements.txt that will be installed in the JupyterLab
+	# freezes requirements
+	pip-compile requirements-dev.in --resolver=backtracking --output-file requirements-dev.txt
+	pip install -r requirements-dev.txt
+# TESTS -------------------------------------------------
 
 .PHONY: tests
 tests: ## tests backed cookie and image build

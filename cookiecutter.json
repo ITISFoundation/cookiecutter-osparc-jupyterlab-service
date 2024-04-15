@@ -1,0 +1,31 @@
+{
+  "author_name": "YourName YourSurname",
+  "author_email": "Your address email (eq. you@example.com)",
+  "author_affiliation": "University of Anywhere, Department of something",
+  "contact_email": "{{ cookiecutter.author_email }}",
+  "project_name": "Name of the project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '-') }}",
+  "project_package_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_short_description": "{{ cookiecutter.project_name }}",
+  "docker_base": [
+    "quay.io/jupyter/minimal-notebook:python-3.11",
+    "quay.io/jupyter/r-notebook:r-4.3.3",
+    "quay.io/jupyter/julia-notebook:julia-1.10.2",
+    "custom:special-image"
+  ],
+  "number_of_inputs": 4,
+  "number_of_outputs": 4,
+  "git_repo": [
+    "local",
+    "github",
+    "gitlab"
+  ],
+  "git_username": "Yourusername",
+  "release_date": "{% now 'utc', '%Y' %}",
+  "version": "0.1.0",
+  "resources_CPU_nanoCPUs": 4000000000,
+  "resources_RAM_nanoBytes": 8000000000, 
+  "_extensions": [
+    "jinja2_time.TimeExtension"
+  ]
+}

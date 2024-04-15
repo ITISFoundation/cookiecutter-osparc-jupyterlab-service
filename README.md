@@ -3,7 +3,7 @@
 Template library to generate an [o²S²PARC compatible interactive service with the JupyterLab environment](https://docs.osparc.io/#/docs/study_setup/JupyterLabs?id=jupyterlab). 
 In addition to the different JupyterLab "flavours" offered on o²S²PARC, you can use this library to create one with your favourite software and tools. 
 
-This library is pre-configured to easily build JuptyerLabs with Python, R or Julia and additional dependencies. Just choose the appropriate `base_image` when running the cookiecutter and follow the instructions in the `README.md`.
+This library is pre-configured to easily build JupyterLabs with Python, R or Julia and additional dependencies. Just choose the appropriate `base_image` when running the cookiecutter and follow the instructions in the `README.md`.
 
 If you need to install other custom software, you can do so my selecting the custom image as `base_image`.
 
@@ -12,7 +12,7 @@ If you need to install other custom software, you can do so my selecting the cus
 - Python3
 - Python3-venv (recommended to work in a virtual environment)
 - [``cookiecutter``](https://python-package-generator.readthedocs.io/en/master/)
-- [Docker](https://docs.docker.com/get-docker/) (if you wish to build and test the service locally)
+- [``Docker``](https://docs.docker.com/get-docker/) (if you wish to build and test the service locally)
 
 ```console
 sudo apt-get update

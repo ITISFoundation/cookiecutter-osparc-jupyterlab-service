@@ -1,4 +1,4 @@
-name: Nake cookies and build images
+name: Bake cookies and build images
 
 env:
   DOCKER_BUILDX: "0.3.1"
@@ -6,22 +6,20 @@ env:
 on: ["push", "pull_request"]
 
 jobs:
-  cookie-cutter-osparc:
-    name: testing cookie-cutter-osparc
+  cookiecutter-jupyterlab-osparc:
+    name: testing cookiecutter jupyterlab
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        python: [3.10]
-        os: [ubuntu-20.04]
-        docker_buildx: [v0.8.2]
-      fail-fast: false
+        python: ["3.10"]
+        os: ["ubuntu-20.04"]
     steps:
       - uses: actions/checkout@v3
-      - name: setup docker buildx
+      - name: Set up Docker Buildx
         id: buildx
         uses: docker/setup-buildx-action@v2
         with:
-          version: ${{ matrix.docker_buildx }}
+          version: v0.13.1
           driver: docker-container
       - name: setup python environment
         uses: actions/setup-python@v4

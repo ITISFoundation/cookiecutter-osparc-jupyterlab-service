@@ -1,8 +1,10 @@
-# cookiecutter-osparc-service
+# Cookiecutter For o²S²PARC Jupyter Services
 
-Status: ![Build Status](https://github.com/ITISFoundation/cookiecutter-osparc-service/workflows/Github-CI%20Push/PR/badge.svg)
+Status: ![Build Status](https://github.com/ITISFoundation/cookiecutter-osparc-jupyterlab-service/workflows/Github-CI%20Push/PR/badge.svg)
 
-Cookiecutter to generate an oSparc compatible service for the oSparc simcore platform. Currently only for **computational services** supported.
+Template library to generate an [o²S²PARC compatible interactive service with the JupyterLab environment](https://docs.osparc.io/#/docs/study_setup/JupyterLabs?id=jupyterlab). 
+In addition to the different JupyterLab "flavours" offered on o²S²PARC, you can use this library to create one with your favourite software and tools. 
+As a basis, we recommend to start from the [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/). 
 
 
 ## Requirements
@@ -25,23 +27,23 @@ Generate a new Cookiecutter template layout:
 ```console
 python3 -m venv .venv
 source .venv/bin/activate
-cookiecutter gh:ITISFoundation/cookiecutter-osparc-service
+cookiecutter gh:ITISFoundation/cookiecutter-osparc-jupyterlab-service
 ```
 
-Check [FAQ](./FAQ.md)
+## Information for the developers of this cookiecutter
 
-## Tutorials and guides
-A video tutorial is available:
-<iframe width="560" height="315" src="https://www.youtube.com/embed/yoKXHMQcs1Y?si=prc4N6bP01I0unax" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-
-## Development
-
+### Get the code and run the cookiecutter
 ```console
-git clone https://github.com/ITISFoundation/cookiecutter-osparc-service.git
-cd cookiecutter-osparc-service
+git clone https://github.com/ITISFoundation/cookiecutter-osparc-jupyterlab-service.git
+cd cookiecutter-osparc-jupyterlab-service
 make devenv
 source .venv/bin/activate
 make play
+```
+
+### Run the tests
+This will create different projects based on different docker image bases, specified in [cookiecutter.json](/cookiecutter.json), and will build the images (this can take some time)
+```console
 make tests
 ```
 
@@ -49,7 +51,7 @@ make tests
 
 This project is licensed under the terms of the [MIT License](/LICENSE)
 
-
+## More Details
 ---
 
 <p align="center">

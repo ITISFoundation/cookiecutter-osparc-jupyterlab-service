@@ -29,9 +29,8 @@ jobs:
           cache-dependency-path: "**/requirements*.txt"
       - name: set dev environs
         run: make devenv
-      - name: test cookiecutter
+      - name: test cookiecutter build images
         run: |
           source .venv/bin/activate
-          ls
           pip install -r requirements-dev.txt
           make tests

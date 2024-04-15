@@ -49,7 +49,7 @@ make tests
 ```
 
 ### Extend the tests
-Right now, tests only checks that cookiecutter can be run and the Docker images built. Manual testing is still required to check that the build images run as expected.
+In the latest version, tests only checks that cookiecutter can be run and the Docker images built. Manual testing is still required to check that the build images run as expected.
 
 ## License
 
@@ -57,11 +57,12 @@ This project is licensed under the terms of the [MIT License](/LICENSE)
 
 ## More Details
 
-This cookiecutter allows users to choose a Kernel, among Python, R and Julia, where they can install packages with from a requirement-like file (see [env-config]({{cookiecutter.project_slug}}/env-config/)) for details. 
+This cookiecutter allows users to choose a Kernel, among Python, R and Julia, where they can install packages with from a requirement-like file (see [env-config]({{cookiecutter.project_slug}}/env-config/)) for details. By default the latest versions (as of April 2024) provided by the Jupyter team are used (e.g. Python 3.11). Users find in their Dockerfiles how to find older versions. 
 
 In case these options are not enough, they can build their custom image. We recommend to use one of the [Jupyter Docker Stacks]({{cookiecutter.project_slug}}/Dockerfile#L4-L5) as base (so JupyterLab is already installed and configured) and the [start-up scripts](./{{cookiecutter.project_slug}}/boot_scripts/) can be re-used.
 
 By default, with this cookiecutter, users install their libraries in the main kernel (i.e. we don't add an additional kernel to the ones already shipped with the base JupyterLab).
+
 ---
 
 <p align="center">

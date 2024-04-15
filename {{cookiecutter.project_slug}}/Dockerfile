@@ -7,6 +7,8 @@ FROM {{ cookiecutter.docker_base }} as base
 
 {% if cookiecutter.docker_base == "custom:special-image" %}
 # Choose your custom docker image, for example some jupyter-based ones are documented  here: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
+# If you need older versions, you can find more information here: https://github.com/jupyter/docker-stacks?tab=readme-ov-file#using-old-images
+# Or check the available images in the registry: https://quay.io/organization/jupyter
 FROM {{ cookiecutter.docker_base }} as base
 {% endif %}
 

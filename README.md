@@ -66,5 +66,7 @@ By default, with this cookiecutter, users install their libraries in the main ke
 ---
 
 <p align="center">
-<img src="https://forthebadge.com/images/badges/built-with-love.svg" width="150">
+<a href="https://www.z43.swiss" target="_blank">
+<image src="https://raw.githubusercontent.com/ITISFoundation/osparc-simcore-clients/4e8b18494f3191d55f6692a6a605818aeeb83f95/docs/_media/mwl.png" alt="Made with love (and lots of hard work) at www.z43.swiss" width="20%" />
+</a>
 </p>

@@ -47,7 +47,7 @@ tests: ## tests backed cookie and image build
 		--failed-first \
 		--durations=0 \
 		$(CURDIR)/tests/test_bake_project.py
-	@pytest -vv \
+	@pytest -o log_cli=True -vv \
 		--basetemp=$(CURDIR)/tmp \
 		--exitfirst \
 		--failed-first \

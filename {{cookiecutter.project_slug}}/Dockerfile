@@ -34,13 +34,13 @@ ENV HOME="/home/$NB_USER"
 #   apt-get clean && rm -rf /var/lib/apt/lists/* 
 
 {% if cookiecutter.docker_base == "quay.io/jupyter/minimal-notebook:python-3.11" %}
-
+ENV REQ_FILE="requirements.txt"
 # ------------------------------  Python packages   --------------
 # This will install the additional packages that you specified in requirements.txt in the pre-existing Python kernel
 # Like in: https://github.com/jupyter/docker-stacks/blob/main/images/scipy-notebook/Dockerfile
 
-COPY --chown=$NB_UID:$NB_GID env-config/python/requirements.txt ${NOTEBOOK_BASE_DIR}/requirements.txt
-RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/requirements.txt
+COPY --chown=$NB_UID:$NB_GID env-config/python/${REQ_FILE} ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
+RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
 
 ## ----------------------------------------------------------------------
 {% endif %}
@@ -49,17 +49,19 @@ RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/requirements.txt
 # ------------------------- Other kernel -------------------------------------------
 # This will install the additional packages that you specified in requirements.txt in the pre-existing R kernel
 # Like in: https://github.com/jupyter/docker-stacks/blob/main/images/r-notebook/Dockerfile
-COPY --chown=$NB_UID:$NB_GID env-config/r/requirements.txt ${NOTEBOOK_BASE_DIR}/requirements.txt
-RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/requirements.txt
+ENV REQ_FILE="requirements.txt"
+COPY --chown=$NB_UID:$NB_GID env-config/r/${REQ_FILE} ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
+RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
 ## ------------------------------------------------------------------------
 {% endif %}
 
 
 {% if cookiecutter.docker_base == "quay.io/jupyter/julia-notebook:julia-1.10.2" %} 
+ENV REQ_FILE="Project.toml"
 # ------------------------- Other kernel -------------------------------------------
 # This will install the additional packages that you specified in Project.toml in the pre-existing Julia kernel.
-COPY --chown=$NB_UID:$NB_GID env-config/julia/Project.toml ${NOTEBOOK_BASE_DIR}/Project.toml
-RUN julia --project=${NOTEBOOK_BASE_DIR} -e 'using Pkg; Pkg.instantiate()'
+COPY --chown=$NB_UID:$NB_GID env-config/julia/${REQ_FILE} ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
+RUN julia --project=${REQ_FILE} -e 'using Pkg; Pkg.instantiate()'
 ## ------------------------------------------------------------------------
 {% endif %}
 
@@ -82,7 +84,7 @@ COPY --chown=$NB_UID:$NB_GID CHANGELOG.md ${NOTEBOOK_BASE_DIR}/CHANGELOG.md
 
 # remove write permissions from files which are not supposed to be edited
 RUN chmod gu-w ${NOTEBOOK_BASE_DIR}/CHANGELOG.md && \
-  chmod gu-w ${NOTEBOOK_BASE_DIR}/requirements.txt
+  chmod gu-w ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
 
 RUN mkdir --parents "/home/${NB_USER}/.virtual_documents" && \
   chown --recursive "$NB_USER" "/home/${NB_USER}/.virtual_documents"

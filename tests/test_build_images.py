@@ -1,22 +1,24 @@
-import subprocess
-import pytest
 import os
+import subprocess
+from pathlib import Path
 from pytest_cookies.plugin import Result
 
-# @pytest.mark.parametrize(
-#     "commands_on_baked_project",
-#     (
-#         "make build",
-#     ),
-# )
+
 def test_build_image(baked_project: Result):
     working_dir = baked_project.project_path
-    # subprocess.run(
-    #     ["/bin/bash", "-c", commands_on_baked_project], cwd=working_dir, check=True
-    # )
+    assert working_dir is not None
     os.chdir(str(working_dir))
-    
-    build_command = subprocess.run(["/bin/bash", "-c", "make build"], shell=False, stdout=subprocess.PIPE, stderr=subprocess.PIPE, check=True, cwd=working_dir)
-    print(build_command.stderr)
-    print(build_command.stdout)
 
+    # Build baked images, except custom (doesn't produce a valid Dockerfile by design)
+    dockerfile = Path.joinpath(working_dir, "Dockerfile")
+    with open(dockerfile, "r") as fp:
+        content = fp.read()
+        if "custom:special-image" not in content:
+            subprocess.run(
+                ["/bin/bash", "-c", "make build"],
+                shell=False,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=True,
+                cwd=working_dir,
+            )

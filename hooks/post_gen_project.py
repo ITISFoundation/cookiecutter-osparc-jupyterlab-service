@@ -31,19 +31,6 @@ def create_ignore_listings():
     common_gitignore.unlink()
     python_gitignore.unlink()
 
-    # .dockerignore
-    common_dockerignore = Path("Common.dockerignore")
-    dockerignore_file = Path(".dockerignore")
-    dockerignore_file.unlink(missing_ok=True)
-    shutil.copyfile(common_dockerignore, dockerignore_file)
-
-    # appends .gitignore above
-    with dockerignore_file.open("at") as fh:
-        fh.write("\n")
-        fh.write(gitignore_file.read_text())
-
-    common_dockerignore.unlink()
-
 
 def remove_repo_folder():
     if SELECTED_GIT_REPO != "github":

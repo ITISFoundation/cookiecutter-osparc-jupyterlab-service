@@ -32,5 +32,6 @@ jobs:
       - name: test cookiecutter
         run: |
           source .venv/bin/activate
+          ls
           pip install -r requirements-dev.txt
           make tests

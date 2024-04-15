@@ -1,17 +1,18 @@
 # Cookiecutter For o²S²PARC Jupyter Services
 
-Status: ![Build Status](https://github.com/ITISFoundation/cookiecutter-osparc-jupyterlab-service/workflows/Github-CI%20Push/PR/badge.svg)
-
 Template library to generate an [o²S²PARC compatible interactive service with the JupyterLab environment](https://docs.osparc.io/#/docs/study_setup/JupyterLabs?id=jupyterlab). 
 In addition to the different JupyterLab "flavours" offered on o²S²PARC, you can use this library to create one with your favourite software and tools. 
-As a basis, we recommend to start from the [Jupyter Docker Stacks](https://jupyter-docker-stacks.readthedocs.io/en/latest/). 
 
+This library is pre-configured to easily build JuptyerLabs with Python, R or Julia and additional dependencies. Just choose the appropriate `base_image` when running the cookiecutter and follow the instructions in the `README.md`.
+
+If you need to install other custom software, you can do so my selecting the custom image as `base_image`.
 
 ## Requirements
 - GNU Make
 - Python3
 - Python3-venv (recommended to work in a virtual environment)
 - [``cookiecutter``](https://python-package-generator.readthedocs.io/en/master/)
+- [Docker](https://docs.docker.com/get-docker/) (if you wish to build and test the service locally)
 
 ```console
 sudo apt-get update

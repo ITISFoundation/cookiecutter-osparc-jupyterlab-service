@@ -14,6 +14,7 @@ If you need to install other custom software, you can do so my selecting the cus
 - [``cookiecutter``](https://python-package-generator.readthedocs.io/en/master/)
 - [``Docker``](https://docs.docker.com/get-docker/) (if you wish to build and test the service locally)
 
+To install the cookiecutter:
 ```console
 sudo apt-get update
 sudo apt-get install -y make python3-venv
@@ -43,13 +44,13 @@ make play
 ```
 
 ### Run the tests
-This will create different projects based on different docker image bases, specified in [cookiecutter.json](/cookiecutter.json), and will build the images (this can take some time)
+This will create different projects on the docker image bases, specified in [cookiecutter.json](/cookiecutter.json), and will build the images (this can take some time)
 ```console
 make tests
 ```
 
 ### Extend the tests
-In the latest version, tests only checks that cookiecutter can be run and the Docker images built. Manual testing is still required to check that the build images run as expected.
+In the latest version, tests only checks that cookiecutter can be run and the Docker images built. Manual testing is still required to check that the built images run as expected.
 
 ## License
 
@@ -57,11 +58,11 @@ This project is licensed under the terms of the [MIT License](/LICENSE)
 
 ## More Details
 
-This cookiecutter allows users to choose a Kernel, among Python, R and Julia, where they can install packages with from a requirement-like file (see [env-config]({{cookiecutter.project_slug}}/env-config/)) for details. By default the latest versions (as of April 2024) provided by the Jupyter team are used (e.g. Python 3.11). Users find in their Dockerfiles how to find older versions. 
+This cookiecutter allows users to choose a Kernel, among Python, R and Julia, where they can install packages from a requirement-like file (see [env-config]({{cookiecutter.project_slug}}/env-config/) for details). By default the latest versions (as of April 2024) provided by the Jupyter team are used (e.g. Python 3.11). Users find in their Dockerfiles instructions on how to use older versions. 
 
 In case these options are not enough, they can build their custom image. We recommend to use one of the [Jupyter Docker Stacks]({{cookiecutter.project_slug}}/Dockerfile#L4-L5) as base (so JupyterLab is already installed and configured) and the [start-up scripts](./{{cookiecutter.project_slug}}/boot_scripts/) can be re-used.
 
-By default, with this cookiecutter, users install their libraries in the main kernel (i.e. we don't add an additional kernel to the ones already shipped with the base JupyterLab).
+By default, with this cookiecutter, users install their libraries in the main kernel (i.e. we don't add an additional kernel and environment to the ones already shipped with the base JupyterLab).
 
 ---
 

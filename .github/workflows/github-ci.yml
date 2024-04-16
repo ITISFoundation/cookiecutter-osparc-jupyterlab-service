@@ -14,6 +14,13 @@ jobs:
         python: ["3.10"]
         os: ["ubuntu-20.04"]
     steps:
+      - uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v2
+        with:
+          version: v0.13.1
+          driver: docker-container
       - name: create new dir
         run: sudo mkdir -p /mnt/docker
       - name: Maximize build space
@@ -33,13 +40,6 @@ jobs:
           sudo cat /etc/docker/daemon.json
           sudo service docker start
           docker info | grep "Docker Root" 
-      - uses: actions/checkout@v3
-      - name: Set up Docker Buildx
-        id: buildx
-        uses: docker/setup-buildx-action@v2
-        with:
-          version: v0.13.1
-          driver: docker-container
       - name: setup python environment
         uses: actions/setup-python@v4
         with:

@@ -94,3 +94,5 @@ ENV JP_LSP_VIRTUAL_DIR="/home/${NB_USER}/.virtual_documents"
 
 # Copying boot scripts
 COPY --chown=$NB_UID:$NB_GID boot_scripts/ /docker
+
+ENTRYPOINT [ "/bin/bash", "/docker/entrypoint.bash" ]

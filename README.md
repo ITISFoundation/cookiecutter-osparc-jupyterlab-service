@@ -20,7 +20,7 @@ sudo apt-get update
 sudo apt-get install -y make python3-venv
 python3 -m venv .venv
 source .venv/bin/activate
-pip install cookiecutter
+pip install cookiecutter jinja2_time
 ```
 
 ## Usage
@@ -29,14 +29,14 @@ Generate a new Cookiecutter template layout:
 ```console
 python3 -m venv .venv
 source .venv/bin/activate
-cookiecutter gh:ITISFoundation/cookiecutter-osparc-jupyterlab-service
+cookiecutter git+ssh://git@github.com/ITISFoundation/cookiecutter-osparc-jupyterlab-service
 ```
 
 ## Information for the developers of this cookiecutter
 
 ### Get the code and run the cookiecutter
 ```console
-git clone https://github.com/ITISFoundation/cookiecutter-osparc-jupyterlab-service.git
+git clone git+ssh://git@github.com/ITISFoundation/cookiecutter-osparc-jupyterlab-service
 cd cookiecutter-osparc-jupyterlab-service
 make devenv
 source .venv/bin/activate

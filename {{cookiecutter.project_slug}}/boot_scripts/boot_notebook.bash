@@ -27,10 +27,6 @@ cat > .jupyter_config.json <<EOF
     "FileCheckpoints": {
         "checkpoint_dir": "/home/jovyan/._ipynb_checkpoints/"
     },
-    "KernelSpecManager": {
-        "ensure_native_kernel": false,
-        "whitelist": ["python-maths", "octave"]
-    },
     "Session": {
         "debug": false
     },
@@ -42,14 +38,18 @@ cat > .jupyter_config.json <<EOF
         "disable_check_xsrf": true,
         "extra_static_paths": ["/static"],
         "ip": "0.0.0.0",
-        "notebook_dir": "${NOTEBOOK_BASE_DIR}",
+        "root_dir": "${NOTEBOOK_BASE_DIR}",
         "open_browser": false,
         "port": 8888,
-        "preferred_dir": "${NOTEBOOK_BASE_DIR}/workspace/",
         "quit_button": false,
         "root_dir": "${NOTEBOOK_BASE_DIR}",
-        "token": "${NOTEBOOK_TOKEN}",
         "webbrowser_open_new": 0
+    },
+    "IdentityProvider": {
+        "token": "${NOTEBOOK_TOKEN}"
+    },
+    "FileContentsManager": {
+        "preferred_dir": "${NOTEBOOK_BASE_DIR}/workspace/"
     }
 }
 EOF

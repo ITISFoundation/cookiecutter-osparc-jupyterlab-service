@@ -42,7 +42,7 @@ ENV REQ_FILE="requirements.txt"
 # Like in: https://github.com/jupyter/docker-stacks/blob/main/images/scipy-notebook/Dockerfile
 
 COPY --chown=$NB_UID:$NB_GID env-config/python/${REQ_FILE} ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
-RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
+RUN pip install -r ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
 
 ## ----------------------------------------------------------------------
 {% endif %}

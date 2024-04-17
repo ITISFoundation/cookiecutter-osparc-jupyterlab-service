@@ -57,8 +57,9 @@ In the latest version, tests only checks that cookiecutter can be run and the Do
 This project is licensed under the terms of the [MIT License](/LICENSE)
 
 ## More Details
+The service code is in the folder [{{cookiecutter.project_slug}}](./{{cookiecutter.project_slug}}/).
 
-This cookiecutter allows users to choose a Kernel, among Python, R and Julia, where they can install packages from a requirement-like file (see [env-config]({{cookiecutter.project_slug}}/env-config/) for details). By default the latest versions (as of April 2024) provided by the Jupyter team are used (e.g. Python 3.11). Users find in their Dockerfiles instructions on how to use older versions. 
+This cookiecutter allows users to choose a Kernel, among Python, R and Julia, where they can install packages from a requirement-like file (see [env-config]({{cookiecutter.project_slug}}/env-config/) for details). By default, the latest kernel versions (as of April 2024) provided by the Jupyter team are used (e.g. Python 3.11). Users find in their [Dockerfiles instructions](./{{cookiecutter.project_slug}}/Dockerfile#L4) on how to use older versions. 
 
 In case these options are not enough, they can build their custom image. We recommend to use one of the [Jupyter Docker Stacks]({{cookiecutter.project_slug}}/Dockerfile#L4-L5) as base (so JupyterLab is already installed and configured) and the [start-up scripts](./{{cookiecutter.project_slug}}/boot_scripts/) can be re-used.
 

@@ -31,7 +31,7 @@ If you wish to change your Service (e.g. add additional librarie), after it has 
 3. Increase ("bump") the Service version: in your console execute: ``make version-patch``, or ``make version-minor``, or  ``make version-major``
 4. Commit and push the changes to your repository
 5. Wait for the GitHub/GitLab pipelines to run successfully
-5. Once the pipeline has run successfully, get in touch with [o²S²PARC Support](mailto:support@osparc.io), we will take care of tpublishing the new version!
+5. Once the pipeline has run successfully, get in touch with [o²S²PARC Support](mailto:support@osparc.io), we will take care of publishing the new version!
 
 
 ### Useful commands

@@ -5,11 +5,10 @@
 
 
 # files and folders recursively
-Dockerfile          @elisabettai
-Makefile            @elisabettai
+Dockerfile          @{{ cookiecutter.git_username }}
+Makefile            @{{ cookiecutter.git_username }}
 
 # NOTE: '/' denotes the root of the repository
-/.github/            @pcrespov @GitHK
-/.osparc/            @pcrespov @GitHK @elisabettai
-/kernels/            @elisabettai
-/docker/             @pcrespov @GitHK
+/.github/            @{{ cookiecutter.git_username }}
+/.osparc/            @{{ cookiecutter.git_username }}
+

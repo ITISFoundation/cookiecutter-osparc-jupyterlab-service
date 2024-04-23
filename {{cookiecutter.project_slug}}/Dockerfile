@@ -1,5 +1,5 @@
 
-{% if cookiecutter.docker_base != "custom:special-image" or cookiecutter.docker_base != "custom:julia"%}
+{% if cookiecutter.docker_base != "custom:special-image" and cookiecutter.docker_base != "custom:julia"%}
 # {{ cookiecutter.docker_base }} is one possible base image, you can find information about others here: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
 # Check the Jupyter/docker-stacks repo for more information about other versions of Python/OS: https://github.com/jupyter/docker-stacks
 FROM {{ cookiecutter.docker_base }} as base

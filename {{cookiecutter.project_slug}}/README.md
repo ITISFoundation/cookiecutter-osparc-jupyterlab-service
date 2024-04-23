@@ -19,9 +19,10 @@
 ### Publish the Service on o²S²PARC
 Once you're happy with your code:
 1. Push it to a public repository.
-2. An automated pipeline will build the Docker image for you (as in step 5), via GitHub actions or a GitLab CI (see `.github` or `.gitlab` folders)
-3. Check that the automated pipeline executes successfully
-4. Once the pipeline has run successfully, get in touch with [o²S²PARC Support](mailto:support@osparc.io), we will take care of the final steps!
+2. An automated pipeline (GitHub Actions) will build the Docker image for you (as in step 5)
+3. Wait for the GitHub pipeline to run successfully
+4. Check that the automated pipeline executes successfully
+5. Once the pipeline has run successfully, get in touch with [o²S²PARC Support](mailto:support@osparc.io), we will take care of the final steps!
 
 ### Change the Service (after it has been published on o²S²PARC )
 If you wish to change your Service (e.g. add additional librarie), after it has been published on o²S²PARC, you have to **create a new version**:
@@ -30,7 +31,7 @@ If you wish to change your Service (e.g. add additional librarie), after it has 
 3. Increase ("bump") the Service version: in your console execute: ``make version-patch``, or ``make version-minor``, or  ``make version-major``
 4. Commit and push the changes to your repository
 5. Wait for the GitHub/GitLab pipelines to run successfully
-5. Once the pipeline has run successfully, get in touch with [o²S²PARC Support](mailto:support@osparc.io), we will take care of tpublishing the new version!
+5. Once the pipeline has run successfully, get in touch with [o²S²PARC Support](mailto:support@osparc.io), we will take care of publishing the new version!
 
 
 ### Useful commands

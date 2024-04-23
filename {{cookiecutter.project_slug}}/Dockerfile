@@ -1,7 +1,7 @@
 
-{% if cookiecutter.docker_base != "custom:special-image" %}
+{% if cookiecutter.docker_base != "custom:special-image" or cookiecutter.docker_base != "custom:julia"%}
 # {{ cookiecutter.docker_base }} is one possible base image, you can find information about others here: https://jupyter-docker-stacks.readthedocs.io/en/latest/using/selecting.html
-# Check the Jupyter/docker-stacks repo for more information about other versions: https://github.com/jupyter/docker-stacks
+# Check the Jupyter/docker-stacks repo for more information about other versions of Python/OS: https://github.com/jupyter/docker-stacks
 FROM {{ cookiecutter.docker_base }} as base
 {% endif %}
 
@@ -10,6 +10,11 @@ FROM {{ cookiecutter.docker_base }} as base
 # If you need older versions, you can find more information here: https://github.com/jupyter/docker-stacks?tab=readme-ov-file#using-old-images
 # Or check the available images in the registry: https://quay.io/organization/jupyter
 FROM {{ cookiecutter.docker_base }} as base
+{% endif %}
+
+{% if cookiecutter.docker_base == "custom:julia" %}
+# Follow the instructions below to install the desired julia version in the base Jupyterlab image
+FROM "quay.io/jupyter/minimal-notebook:python-3.11" as base
 {% endif %}
 
 LABEL maintainer={{ cookiecutter.git_username }}
@@ -58,12 +63,27 @@ RUN mamba install --yes --file ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
 {% endif %}
 
 
-{% if cookiecutter.docker_base == "quay.io/jupyter/julia-notebook:julia-1.10.2" %} 
-ENV REQ_FILE="Project.toml"
+{% if cookiecutter.docker_base == "custom:julia" %} 
+
+USER root
+ENV COOKIE_JULIA_VERSION=1.6.0
+
+ENV JULIA_DEPOT_PATH=/opt/julia \
+    JULIA_PKGDIR=/opt/julia
+
+# Setup Julia
+COPY setup-scripts/ /opt/setup-scripts
+RUN /opt/setup-scripts/setup_julia.py 1.6.0
+
+USER ${NB_UID}
+
+# Setup IJulia kernel
+RUN /opt/setup-scripts/setup-julia-packages.bash
+
 # ------------------------- Other kernel -------------------------------------------
-# This will install the additional packages that you specified in Project.toml in the pre-existing Julia kernel.
-COPY --chown=$NB_UID:$NB_GID env-config/julia/${REQ_FILE} ${NOTEBOOK_BASE_DIR}/${REQ_FILE}
-RUN julia --project=${REQ_FILE} -e 'using Pkg; Pkg.instantiate()'
+# This will install the additional packages that from you Project.toml and Manifestl.toml in the pre-existing Julia kernel.
+COPY --chown=$NB_UID:$NB_GID env-config/julia/* ${JULIA_PKGDIR}
+RUN julia --project=${JULIA_PKGDIR} -e 'using Pkg; Pkg.instantiate()'
 ## ------------------------------------------------------------------------
 {% endif %}
 

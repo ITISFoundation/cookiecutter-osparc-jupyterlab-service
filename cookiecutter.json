@@ -10,7 +10,7 @@
   "docker_base": [
     "quay.io/jupyter/minimal-notebook:python-3.11",
     "quay.io/jupyter/r-notebook:r-4.3.3",
-    "quay.io/jupyter/julia-notebook:julia-1.10.2",
+    "custom:julia",
     "custom:special-image"
   ],
   "number_of_inputs": 4,

@@ -46,6 +46,7 @@ def remove_requirements_folders():
         shutil.rmtree("env-config/r")
     if "julia" not in SELECTED_DOCKER_BASE:
         shutil.rmtree("env-config/julia")
+        shutil.rmtree("setup-scripts")
 
 
 @contextmanager

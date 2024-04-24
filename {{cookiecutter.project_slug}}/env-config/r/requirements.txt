@@ -1,5 +1,5 @@
 #
-# This file keeps track of all the python packages and versions that will be installed in your Service.
+# This file keeps track of all the R packages and versions that will be installed in your Service.
 # Some packages are already installed, see here: https://github.com/jupyter/docker-stacks/blob/e838ff397a2d9c2ad0faae051ef0ec4f20732320/images/r-notebook/Dockerfile#L31
 # The following list is just an example
 r-leaflet==2.2.2 

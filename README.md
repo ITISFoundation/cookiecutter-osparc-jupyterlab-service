@@ -5,7 +5,7 @@ In addition to the different JupyterLab "flavours" offered on o²S²PARC, you ca
 
 This library is pre-configured to easily build JupyterLabs with Python, R or Julia and additional dependencies. Just choose the appropriate `base_image` when running the cookiecutter and follow the instructions in the `README.md`.
 
-If you need to install other custom software, you can do so my selecting the custom image as `base_image`.
+If you need to install other custom software, you can do so by selecting the custom image as `base_image`.
 
 ## Requirements
 - GNU Make

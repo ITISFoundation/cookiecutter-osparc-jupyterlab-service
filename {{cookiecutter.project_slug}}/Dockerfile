@@ -40,7 +40,7 @@ ENV HOME="/home/$NB_USER"
 #   && \
 #   apt-get clean && rm -rf /var/lib/apt/lists/* 
 
-{% if cookiecutter.docker_base == "quay.io/jupyter/minimal-notebook:python-3.11" %}
+{% if cookiecutter.docker_base == "quay.io/jupyter/minimal-notebook:lab-4.4.5" %}
 ENV REQ_FILE="requirements.txt"
 # ------------------------------  Python packages   --------------
 # This will install the additional packages that you specified in requirements.txt in the pre-existing Python kernel

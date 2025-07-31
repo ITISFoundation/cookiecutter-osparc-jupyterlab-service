@@ -27,8 +27,6 @@ jobs:
           python-version: ${{ matrix.python }}
           cache: "pip"
           cache-dependency-path: "**/requirements*.txt"
-      - name: show versions
-        run: ./ci/helpers/show_system_versions.bash
       - name: set dev environs
         run: make devenv
       - name: test cookiecutter build images

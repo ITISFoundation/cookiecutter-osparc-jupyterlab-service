@@ -29,7 +29,7 @@ Generate a new Cookiecutter template layout:
 ```console
 python3 -m venv .venv
 source .venv/bin/activate
-cookiecutter git+ssh://git@github.com/ITISFoundation/cookiecutter-osparc-jupyterlab-service
+cookiecutter gh:ITISFoundation/cookiecutter-osparc-jupyterlab-service
 ```
 
 ## Information for the developers of this cookiecutter

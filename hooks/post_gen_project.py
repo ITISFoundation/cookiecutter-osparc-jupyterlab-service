@@ -40,7 +40,7 @@ def remove_repo_folder():
 
 
 def remove_requirements_folders():
-    if "python" not in SELECTED_DOCKER_BASE:
+    if "python" not in SELECTED_DOCKER_BASE and "lab" not in SELECTED_DOCKER_BASE:
         shutil.rmtree("env-config/python")
     if "r-notebook" not in SELECTED_DOCKER_BASE:
         shutil.rmtree("env-config/r")

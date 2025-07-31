@@ -8,7 +8,7 @@
   "project_package_name": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "{{ cookiecutter.project_name }}",
   "docker_base": [
-    "quay.io/jupyter/minimal-notebook:python-3.11",
+    "quay.io/jupyter/minimal-notebook:lab-4.4.5",
     "quay.io/jupyter/r-notebook:r-4.3.3",
     "custom:julia",
     "custom:special-image"
